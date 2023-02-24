@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h2>Olá, {{ usuario.username }}!<br>Seja bem-vindo(a) a sua agenda.</h2>
+    <ul>
+        {% for anotacao in anotacoes %}
+            <li>
+                <h2>{{ anotacao.titulo }}</h2>
+                <b>{{ anotacao.get_data_hora }}</b>
+                <p>{{ anotacao.descricao }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
