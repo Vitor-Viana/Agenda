@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    <h2>Criar Agenda</h2>
+
+    <form action="submit" method="post"> {% csrf_token %}
+        <input type="text" name="titulo">
+        <input type="datetime-local" name="data-hora">
+        <textarea name="descricao">Descrição da agenda.</textarea>
+        <button type="submit">Criar</button>
+        <a href="/"><button type="button">Voltar</button></a>
+    </form>
+
+    {% for mensagem in messages %}
+        <strong>Erro: {{ mensagem }}</strong>
+    {% endfor %}
+
+{% endblock %}

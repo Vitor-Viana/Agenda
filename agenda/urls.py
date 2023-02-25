@@ -20,7 +20,11 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.agenda),
+    path('criar-agenda/', views.criar_agenda),
+    path('criar-agenda/submit', views.criar_agenda_submit),
     path('login/', views.login_user),
     path('login/submit', views.submit_login),
     path('logout/', views.logout_user),
+    path('cadastrar-usuario/', views.cadastrar_usuario),
+    path('cadastrar-usuario/submit', views.cadastrar_usuario_submit),
 ]

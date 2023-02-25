@@ -3,6 +3,7 @@
 {% block content %}
 
     <h2>Olá, {{ usuario.username }}!<br>Seja bem-vindo(a) a sua agenda.</h2>
+    <a href="/criar-agenda">CRIAR AGENDA</a>
     <ul>
         {% for anotacao in anotacoes %}
             <li>
