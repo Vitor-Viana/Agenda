@@ -108,6 +108,11 @@ def cadastrar_usuario_submit(request):
         nome_usuario = request.POST.get('nome-usuario')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
+
+        if not nome_usuario or not email or not senha:
+            messages.error(request, 'Todos os campos são obrigatórios!')
+            return redirect('/cadastrar-usuario/')
+
         try:
             usuario = User.objects.get(username=nome_usuario)
             messages.error(request, 'Usuário já cadastrado!')

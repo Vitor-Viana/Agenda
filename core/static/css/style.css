@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    background-color: #000;
+    color: #fff;
+}
+.minhas-agendas-h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #d3d3d3;
+    font-size: 40px;
+}
+.container-agenda-ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.container-agenda-li {
+    background-color: #42426F; /* Azul Corn Flower */
+    margin-top: 20px;
+    padding: 15px;
+    width: 40%;
+    min-width: 200px;
+    min-height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-agenda-li .data-hora {
+    font-size: 14px;
+}
+.container-agenda-li p {
+    margin-top: 10px;
+}
+.container-agenda-li .botao {
+    background-color: #FF1CAE;
+    color: #fff;
+    border-bottom: solid 0.5px #deaaaa;
+    border-left: solid 1px #deaaaa;
+    border-radius: 10px;
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    margin-top: 15px;
+}

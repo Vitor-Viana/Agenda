@@ -1,17 +1,16 @@
 {% extends "index.html" %}
 
 {% block content %}
+    <h2 class="minhas-agendas-h2">Minhas Agendas</h2>
 
-    <h2>Olá, {{ usuario.username }}!<br>Seja bem-vindo(a) a sua agenda.</h2>
-    <a href="/criar-agenda">CRIAR AGENDA</a>
-    <ul>
+    <ul class="container-agenda-ul">
         {% for anotacao in anotacoes %}
-            <li>
+            <li class="container-agenda-li">
                 <h2>{{ anotacao.titulo }}</h2>
-                <b>{{ anotacao.get_data_hora }}</b>
+                <p class="data-hora">{{ anotacao.get_data_hora }}</p>
                 <p>{{ anotacao.descricao }}</p>
-                <a href="/delete-agenda/{{ anotacao.id }}"><button type="button">EXCLUIR</button></a>
-                <a href="/atualizar-agenda/{{ anotacao.id }}"><button type="button">ATUALIZAR</button></a>
+                <a href="/delete-agenda/{{ anotacao.id }}" class="botao">EXCLUIR</a>
+                <a href="/atualizar-agenda/{{ anotacao.id }}" class="botao">ATUALIZAR</a>
             </li>
         {% endfor %}
     </ul>
