@@ -36,6 +36,48 @@ def criar_agenda_submit(request):
         
     return redirect('/')
 
+@login_required(login_url='/login/')
+def delete_agenda(request, id_anotacao):
+    usuario = request.user
+    anotacao = Anotacao.objects.get(id=id_anotacao)
+
+    if anotacao.usuario == usuario:
+        anotacao.delete()
+    return redirect('/')
+
+@login_required(login_url='/login/')
+def atualizar_agenda(request, id_anotacao):
+    usuario = request.user
+    anotacao = Anotacao.objects.get(id=id_anotacao)
+    response = {}
+    response['anotacao'] = anotacao
+
+    if anotacao.usuario == usuario:
+        return render(request, 'atualizar-agenda.html', response)
+
+    return redirect('/')
+
+@login_required(login_url='/login/')
+def atualizar_agenda_submit(request, id_anotacao):
+    if request.POST:
+        usuario = request.user
+
+        titulo = request.POST.get('titulo')
+        data_hora = request.POST.get('data-hora')
+        descricao = request.POST.get('descricao')
+
+        anotacao = Anotacao.objects.get(id=id_anotacao)
+
+        if titulo and data_hora and anotacao.usuario == usuario:
+            Anotacao.objects.filter(id=id_anotacao).update(titulo=titulo,
+                                                           data_hora=data_hora,
+                                                           descricao=descricao)
+        else:
+            messages.error(request, 'Os campos título, data e hora são obrigatórios!')
+            return redirect('/criar-agenda/')
+        
+    return redirect('/')
+
 def login_user(request):
     return render(request, 'login.html')
 

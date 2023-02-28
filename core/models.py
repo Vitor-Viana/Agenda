@@ -9,3 +9,6 @@ class Anotacao (models.Model):
 
     def get_data_hora(self):
         return self.data_hora.strftime('%d/%m/%Y %H:%M Hrs')
+
+    def get_data_hora_input(self):
+        return self.data_hora.strftime('%Y-%m-%dT%H:%M')

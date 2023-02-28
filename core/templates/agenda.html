@@ -10,6 +10,8 @@
                 <h2>{{ anotacao.titulo }}</h2>
                 <b>{{ anotacao.get_data_hora }}</b>
                 <p>{{ anotacao.descricao }}</p>
+                <a href="/delete-agenda/{{ anotacao.id }}"><button type="button">EXCLUIR</button></a>
+                <a href="/atualizar-agenda/{{ anotacao.id }}"><button type="button">ATUALIZAR</button></a>
             </li>
         {% endfor %}
     </ul>
