@@ -32,13 +32,19 @@ h1 {
 }
 .container-form ul li {
     width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.container-form ul li a {
+    width: 100%;
     text-align: center;
 }
 .container-form ul li input {
     background-color: #FF1CAE;
     color: #fff;
     box-shadow: 1px 3px 8px #fff;
-    margin-bottom: 20px;
     outline: none;
     border: none;
     border-radius: 10px;
@@ -65,4 +71,9 @@ h1 {
     color: #fff;
     text-align: center;
     margin: 50px 0;
+}
+.descricao-senha-p {
+    margin-top: 5px;
+    font-size: 11px;
+    width: 60%;
 }

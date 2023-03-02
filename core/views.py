@@ -111,9 +111,13 @@ def cadastrar_usuario_submit(request):
         nome_usuario = request.POST.get('nome-usuario')
         email = request.POST.get('email')
         senha = request.POST.get('senha')
+        confirmar_senha = request.POST.get('confirmar-senha')
 
-        if not nome_usuario or not email or not senha:
+        if not nome_usuario or not email or not senha or not confirmar_senha:
             messages.error(request, 'Todos os campos são obrigatórios!')
+            return redirect('/cadastrar-usuario/')
+        elif senha != confirmar_senha or len(senha) < 8 or len(senha) > 16:
+            messages.error(request, 'Senha inválida!')
             return redirect('/cadastrar-usuario/')
 
         try:

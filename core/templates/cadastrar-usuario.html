@@ -11,14 +11,19 @@
     <link rel="stylesheet" href="{% static 'css/login-cadastra-usuario.css' %}">
 </head>
 <body>
-    <h1>Criar Conta</h1>
+    <h1>Crie Sua Conta!</h1>
 
     <form class="container-form" action="submit" method="post"> {% csrf_token %}
         <ul>
             <li><input placeholder="Nome de Usuário" type="text" name="nome-usuario"></li>
             <li><input placeholder="E-mail" type="text" name="email"></li>
-            <li><input placeholder="Senha" type="password" name="senha"></li>
+            <li>
+                <input placeholder="Senha" type="password" name="senha">
+                <p class="descricao-senha-p">A senha deve ter entre 8 e 16 caracteres.</p>
+            </li>
+            <li><input placeholder="Confirmar Senha" type="password" name="confirmar-senha"></li>
             <li><button type="submit">CRIAR</button></li>
+            <li><a href="/login"><button type="button">VOLTAR</button></a></li>
         </ul>
     </form>
 
