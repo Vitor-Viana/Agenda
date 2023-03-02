@@ -2,18 +2,19 @@
 
 {% block content %}
 
-    <h2>Criar Agenda</h2>
+    <h2 class="criar-agenda-h2">Criar Agenda</h2>
 
-    <form action="submit" method="post"> {% csrf_token %}
-        <input type="text" name="titulo">
-        <input type="datetime-local" name="data-hora">
-        <textarea name="descricao">Descrição da agenda.</textarea>
-        <button type="submit">Criar</button>
-        <a href="/"><button type="button">Voltar</button></a>
+    <form class="container-form" action="submit" method="post"> {% csrf_token %}
+        <ul>
+            <li><input placeholder="Título" type="text" name="titulo"></li>
+            <li><input type="datetime-local" name="data-hora"></li>
+            <li><textarea placeholder="Descrição" name="descricao"></textarea></li>
+            <li><button type="submit">CRIAR</button></li>
+        </ul>
     </form>
 
     {% for mensagem in messages %}
-        <strong>Erro: {{ mensagem }}</strong>
+        <div class="erro">Erro: {{ mensagem }}</div>
     {% endfor %}
 
 {% endblock %}

@@ -9,9 +9,40 @@ body {
     background-color: #000;
     color: #fff;
 }
-.minhas-agendas-h2 {
+
+/* Index */
+
+header {
+    background-color: #42426F;
+    margin-bottom: 50px;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+header div h1 {
+    font-size: 40px;
+    letter-spacing: 5px;
+}
+header div h2 {
+    font-size: 20px;
+}
+header ul {
+    display: flex;
+}
+header ul li {
+    margin-right: 15px;
+}
+header ul li a {
+    color: #fff;
+    letter-spacing: 2.5px;
+}
+
+/* Agenda */
+
+.minhas-agendas-h2, .criar-agenda-h2, .atualizar-agenda-h2 {
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     color: #d3d3d3;
     font-size: 40px;
 }
@@ -22,11 +53,11 @@ body {
 }
 .container-agenda-li {
     background-color: #42426F; /* Azul Corn Flower */
-    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 15px;
     width: 40%;
-    min-width: 200px;
-    min-height: 200px;
+    min-width: 400px;
+    min-height: 250px;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -34,19 +65,107 @@ body {
     flex-direction: column;
 }
 .container-agenda-li .data-hora {
-    font-size: 14px;
+    font-size: 11px;
 }
 .container-agenda-li p {
     margin-top: 10px;
+    font-size: 14px;
 }
 .container-agenda-li .botao {
     background-color: #FF1CAE;
     color: #fff;
-    border-bottom: solid 0.5px #deaaaa;
-    border-left: solid 1px #deaaaa;
+    box-shadow: 1px 3px 8px #fff;
     border-radius: 10px;
     width: 100%;
     padding: 16px 0;
     text-align: center;
-    margin-top: 15px;
+    margin-top: 25px;
+}
+
+/* Criar & Atualizar Agenda */
+
+.container-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.container-form ul {
+    background-color: #42426F; /* Azul Corn Flower */
+    padding: 50px 15px;
+    width: 40%;
+    min-width: 400px;
+    min-height: 250px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.container-form ul li {
+    width: 100%;
+    text-align: center;
+}
+.container-form ul li input {
+    background-color: #FF1CAE;
+    color: #fff;
+    box-shadow: 1px 3px 8px #fff;
+    margin-bottom: 20px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    width: 60%;
+    height: 40px;
+    padding-left: 10px;
+}
+.container-form ul li input::placeholder {
+    color: #fff;
+}
+.container-form ul li textarea {
+    width: 60%;
+    height: 100px;
+    padding: 10px 10px 0 10px;
+    background-color: #FF1CAE;
+    color: #fff;
+    box-shadow: 1px 3px 8px #fff;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+}
+.container-form ul li textarea::placeholder {
+    color: #fff;
+}
+.container-form ul li button {
+    background-color: #FF1CAE;
+    color: #fff;
+    box-shadow: 1px 3px 8px #fff;
+    width: 60%;
+    margin: 0;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 0;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.erro {
+    color: #fff;
+    text-align: center;
+    margin: 50px 0;
+}
+
+@media screen and (max-width: 900px) {
+    /* Index */
+
+    header ul {
+        flex-direction: column;
+    }
+    header ul li {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    /* Agenda */
+
+    .container-agenda-li {
+        width: 80%;
+    }
 }

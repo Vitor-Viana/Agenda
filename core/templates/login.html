@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -5,19 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+
+    <link rel="stylesheet" href="{% static 'css/login-cadastra-usuario.css' %}">
 </head>
 <body>
     <h1>Faça Login</h1>
 
-    <form action="submit" method="post"> {% csrf_token %}
-        <input type="text" name="nome-usuario">
-        <input type="password" name="senha">
-        <button type="submit">ENTRAR</button>
-        <a href="/cadastrar-usuario"><button type="button">CRIAR CONTA</button></a>
+    <form class="container-form" action="submit" method="post"> {% csrf_token %}
+        <ul>
+            <li><input placeholder="Usuário" type="text" name="nome-usuario"></li>
+            <li><input placeholder="Senha" type="password" name="senha"></li>
+            <li><button type="submit">ENTRAR</button></li>
+            <li><a href="/cadastrar-usuario"><button type="button">CRIAR CONTA</button></a></li>
+        </ul>
     </form>
 
     {% for mensagem in messages %}
-        <strong>Erro: {{ mensagem }}</strong>
+        <div class="erro">Erro: {{ mensagem }}</div>
     {% endfor %}
 </body>
 </html>

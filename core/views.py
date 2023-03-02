@@ -16,7 +16,9 @@ def agenda(request):
 
 @login_required(login_url='/login/')
 def criar_agenda(request):
-    return render(request, 'criar-agenda.html')
+    usuario = request.user
+    response = {'usuario':usuario}
+    return render(request, 'criar-agenda.html', response)
 
 @login_required(login_url='/login/')
 def criar_agenda_submit(request):
@@ -51,6 +53,7 @@ def atualizar_agenda(request, id_anotacao):
     anotacao = Anotacao.objects.get(id=id_anotacao)
     response = {}
     response['anotacao'] = anotacao
+    response['usuario'] = usuario
 
     if anotacao.usuario == usuario:
         return render(request, 'atualizar-agenda.html', response)
@@ -74,7 +77,7 @@ def atualizar_agenda_submit(request, id_anotacao):
                                                            descricao=descricao)
         else:
             messages.error(request, 'Os campos título, data e hora são obrigatórios!')
-            return redirect('/criar-agenda/')
+            return redirect('/atualizar-agenda/'+str(id_anotacao))
         
     return redirect('/')
 

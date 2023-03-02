@@ -2,18 +2,19 @@
 
 {% block content %}
 
-    <h2>Atualizar Agenda</h2>
+    <h2 class="atualizar-agenda-h2">Atualizar Agenda</h2>
 
-    <form action="submit" method="post"> {% csrf_token %}
-        <input type="text" value="{{ anotacao.titulo }}" name="titulo">
-        <input type="datetime-local" value="{{ anotacao.get_data_hora_input }}" name="data-hora">
-        <textarea name="descricao">{{ anotacao.descricao }}</textarea>
-        <button type="submit">ATUALIZAR</button>
-        <a href="/"><button type="button">Voltar</button></a>
+    <form class="container-form" action="submit" method="post"> {% csrf_token %}
+        <ul>
+            <li><input type="text" value="{{ anotacao.titulo }}" name="titulo"></li>
+            <li><input type="datetime-local" value="{{ anotacao.get_data_hora_input }}" name="data-hora"></li>
+            <li><textarea name="descricao">{{ anotacao.descricao }}</textarea></li>
+            <li><button type="submit">ATUALIZAR</button></li>
+        </ul>
     </form>
 
     {% for mensagem in messages %}
-        <strong>Erro: {{ mensagem }}</strong>
+        <div class="erro">Erro: {{ mensagem }}</div>
     {% endfor %}
 
 {% endblock %}
