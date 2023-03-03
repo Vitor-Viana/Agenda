@@ -19,7 +19,7 @@
             <li><input placeholder="E-mail" type="text" name="email"></li>
             <li>
                 <input placeholder="Senha" type="password" name="senha">
-                <p class="descricao-senha-p">A senha deve ter entre 8 e 16 caracteres.</p>
+                <p class="descricao-p">A senha deve ter entre 8 e 16 caracteres.</p>
             </li>
             <li><input placeholder="Confirmar Senha" type="password" name="confirmar-senha"></li>
             <li><button type="submit">CRIAR</button></li>
@@ -28,7 +28,7 @@
     </form>
 
     {% for mensagem in messages %}
-        <div class="erro">Erro: {{ mensagem }}</div>
+        <div class="container-msg"><div class="msg">Erro: {{ mensagem }}</div></div>
     {% endfor %}
 </body>
 </html>

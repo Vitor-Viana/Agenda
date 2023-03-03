@@ -67,13 +67,25 @@ h1 {
     margin-top: 20px;
     cursor: pointer;
 }
-.erro {
+.container-msg {
+    display: flex;
+    justify-content: center;
+}
+.msg {
+    background-color: #FF1CAE;
     color: #fff;
     text-align: center;
-    margin: 50px 0;
+    width: 40%;
+    min-width: 400px;
+    padding: 15px;
+    border-radius: 10px;
 }
-.descricao-senha-p {
+.descricao-p {
     margin-top: 5px;
     font-size: 11px;
     width: 60%;
+}
+.descricao-p a {
+    color: #fff;
+    text-decoration: underline;
 }

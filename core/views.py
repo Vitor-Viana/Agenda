@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from random import randint
 
 # Create your views here.
 
@@ -136,3 +137,30 @@ def cadastrar_usuario_submit(request):
                 novoUsuario.save()
 
     return redirect('/login/')
+
+def recuperar_senha(request):
+    return render(request, 'recuperar-senha.html')
+
+def recuperar_senha_submit(request):
+    if request.POST:
+        try:
+            email = request.POST.get('email')
+            usuario = User.objects.get(email=email)
+            messages.success(request, 'Verifique seu e-mail em busca de um link para redefinir sua senha. Se não aparecer em alguns minutos, verifique sua pasta de spam.')
+
+            # Enviar E-mail
+            '''
+                Gerando código de recuperação de senha.
+                O número sorteado aleatória mente está sendo multiplicado pelo id do usuário para evitar o
+                risco de dois usuários receberem o mesmo código de recuperação.
+            '''
+            url = randint(10003567008564000000000000000000, 99999999999999999999999999999999932431241221499999) * usuario.id
+            print('URL: localhost:8000/recuperar-senha/' + str(url) + '/')
+
+        except User.DoesNotExist:
+            messages.error(request, 'E-mail não cadastrado!')
+            
+    return redirect('/recuperar-senha/')
+
+def recuperar_senha_codigo(request, codigo):
+    pass

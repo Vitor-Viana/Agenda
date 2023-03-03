@@ -16,14 +16,17 @@
     <form class="container-form" action="submit" method="post"> {% csrf_token %}
         <ul>
             <li><input placeholder="Usuário" type="text" name="nome-usuario"></li>
-            <li><input placeholder="Senha" type="password" name="senha"></li>
+            <li>
+                <input placeholder="Senha" type="password" name="senha">
+                <p class="descricao-p"><a href="/recuperar-senha">Esqueci minha senha</a></p>
+            </li>
             <li><button type="submit">ENTRAR</button></li>
             <li><a href="/cadastrar-usuario"><button type="button">CRIAR CONTA</button></a></li>
         </ul>
     </form>
 
     {% for mensagem in messages %}
-        <div class="erro">Erro: {{ mensagem }}</div>
+        <div class="container-msg"><div class="msg">Erro: {{ mensagem }}</div></div>
     {% endfor %}
 </body>
 </html>

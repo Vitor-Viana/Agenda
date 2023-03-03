@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha</title>
+
+    <link rel="stylesheet" href="{% static 'css/login-cadastra-usuario.css' %}">
+</head>
+<body>
+    <h1>Recuperar Senha</h1>
+
+    <form class="container-form" action="submit" method="post"> {% csrf_token %}
+        <ul>
+            <li>
+                <input placeholder="Digite o seu e-mail cadastrado!" type="text" name="email">
+                <p class="descricao-p">
+                    Digite o endereço de e-mail cadastrado na sua conta de usuário e enviaremos um link de redefinição de senha.
+                </p>
+            </li>
+            <li><button type="submit">
+                Enviar e-mail de redefinição de senha
+            </button></li>
+        </ul>
+    </form>
+
+    {% for mensagem in messages %}
+        <div class="container-msg"><div class="msg">{{ mensagem }}</div></div>
+    {% endfor %}
+</body>
+</html>

@@ -30,4 +30,7 @@ urlpatterns = [
     path('logout/', views.logout_user),
     path('cadastrar-usuario/', views.cadastrar_usuario),
     path('cadastrar-usuario/submit', views.cadastrar_usuario_submit),
+    path('recuperar-senha/', views.recuperar_senha),
+    path('recuperar-senha/submit', views.recuperar_senha_submit),
+    path('recuperar-senha/<int:codigo>/', views.recuperar_senha_codigo),
 ]
