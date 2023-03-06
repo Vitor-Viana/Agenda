@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redefinir Senha</title>
+
+    <link rel="stylesheet" href="{% static 'css/login-cadastra-usuario.css' %}">
+</head>
+<body>
+    <h1>Redefinir Senha de @{{ usuario }}</h1>
+
+    <form class="container-form" action="submit" method="post"> {% csrf_token %}
+        <ul>
+            <li>
+                <input placeholder="Senha" type="password" name="senha">
+                <p class="descricao-p">A senha deve ter entre 8 e 16 caracteres.</p>
+            </li>
+            <li><input placeholder="Confirmar Senha" type="password" name="confirmar-senha"></li>
+            <li><button type="submit">CRIAR NOVA SENHA</button></li>
+        </ul>
+    </form>
+
+    {% for mensagem in messages %}
+        <div class="container-msg"><div class="msg">Erro: {{ mensagem }}</div></div>
+    {% endfor %}
+</body>
+</html>

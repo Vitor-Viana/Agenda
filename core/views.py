@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from core.models import Anotacao
+from core.models import Anotacao, CodigoRecuperacao
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from random import randint
+import random, string
 
 # Create your views here.
 
@@ -146,21 +146,68 @@ def recuperar_senha_submit(request):
         try:
             email = request.POST.get('email')
             usuario = User.objects.get(email=email)
-            messages.success(request, 'Verifique seu e-mail em busca de um link para redefinir sua senha. Se não aparecer em alguns minutos, verifique sua pasta de spam.')
 
-            # Enviar E-mail
             '''
                 Gerando código de recuperação de senha.
-                O número sorteado aleatória mente está sendo multiplicado pelo id do usuário para evitar o
-                risco de dois usuários receberem o mesmo código de recuperação.
+                O código é concatenado com o id do usuário para garantir que ele seja único.
             '''
-            url = randint(10003567008564000000000000000000, 99999999999999999999999999999999932431241221499999) * usuario.id
-            print('URL: localhost:8000/recuperar-senha/' + str(url) + '/')
+            codigo_recuperacao = ''
+            for _ in range(90):
+                codigo_recuperacao += random.choice(string.ascii_uppercase)
+            
+            codigo_recuperacao += str(usuario.id)
 
+            codigo = CodigoRecuperacao.objects.filter(usuario=usuario)
+            if codigo:
+                codigo.delete()
+                CodigoRecuperacao.objects.create(codigo=codigo_recuperacao,
+                                                 usuario=usuario)
+            else:
+                CodigoRecuperacao.objects.create(codigo=codigo_recuperacao,
+                                                 usuario=usuario)
+            # Enviar E-mail
+            print('URL: localhost:8000/recuperar-senha/' + str(codigo_recuperacao) + '/')
+
+            messages.success(request, 'Verifique seu e-mail em busca de um link para redefinir sua senha. Se não aparecer em alguns minutos, verifique sua pasta de spam.')
+            
         except User.DoesNotExist:
             messages.error(request, 'E-mail não cadastrado!')
             
     return redirect('/recuperar-senha/')
 
-def recuperar_senha_codigo(request, codigo):
-    pass
+def redefinir_senha(request, codigo):
+    try:
+        usuario = CodigoRecuperacao.objects.get(codigo=codigo).usuario
+        respons = {'usuario':usuario}
+        return render(request, 'redefinir-senha.html', respons)
+
+    except CodigoRecuperacao.DoesNotExist:
+        return redirect('/recuperar-senha/')
+
+def redefinir_senha_submit(request, codigo):
+    if request.POST:
+        try:
+            codigo = CodigoRecuperacao.objects.get(codigo=codigo)
+            
+            senha = request.POST.get('senha')
+            confirmar_senha = request.POST.get('confirmar-senha')
+
+            if not senha or not confirmar_senha:
+                messages.error(request, 'Todos os campos são obrigatórios!')
+                return redirect('/recuperar-senha/'+str(codigo.codigo))
+            elif senha != confirmar_senha or len(senha) < 8 or len(senha) > 16:
+                messages.error(request, 'Senha inválida!')
+                return redirect('/recuperar-senha/'+str(codigo.codigo))
+
+            usuario = User.objects.get(username=codigo.usuario)
+            usuario.set_password(senha)
+            usuario.save()  
+
+            codigo.delete()
+
+            return redirect('/login/')
+            
+        except CodigoRecuperacao.DoesNotExist:
+            return redirect('/recuperar-senha/')
+    
+    return redirect('/recuperar-senha/')

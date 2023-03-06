@@ -12,3 +12,7 @@ class Anotacao (models.Model):
 
     def get_data_hora_input(self):
         return self.data_hora.strftime('%Y-%m-%dT%H:%M')
+
+class CodigoRecuperacao(models.Model):
+    codigo = models.CharField(max_length=100, blank=True, null=True)
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
