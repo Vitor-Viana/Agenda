@@ -26,4 +26,4 @@ Como meu sistema sabe que o link enviado é relacionado a um usuário especifico
 
 <img src="./img_readme/gif.gif">
 
-## <a href="https://www.linkedin.com/feed/update/urn:li:activity:7039247488897171456/">Vídeo do Projeto no Linkedin</a>
+## <a href="https://www.linkedin.com/feed/update/urn:li:activity:7039247488897171456/">Clique aqui  para ver o vídeo do projeto no Linkedin</a>
