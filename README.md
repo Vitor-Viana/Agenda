@@ -26,12 +26,4 @@ Como meu sistema sabe que o link enviado é relacionado a um usuário especifico
 
 <img src="./img_readme/gif.gif">
 
-<a href="https://www.linkedin.com/feed/update/urn:li:activity:7039247488897171456/"><button type="button" style="
-    cursor: pointer;
-    background-color: #5959AB;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 50px;
-    font-family: Arial, Helvetica, sans-serif;
-">Vídeo do Projeto no Linkedin</button></a>
+## <a href="https://www.linkedin.com/feed/update/urn:li:activity:7039247488897171456/">Vídeo do Projeto no Linkedin</a>
